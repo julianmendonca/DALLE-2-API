@@ -5,6 +5,7 @@ const app = express();
 const port = 3000;
 
 app.get("/", async (req, res) => {
+  const image = "";
   try {
     const configuration = new Configuration({
       apiKey: process.env.OPENAI_API_KEY,
@@ -15,15 +16,13 @@ app.get("/", async (req, res) => {
     if (!text) {
       res.send("No text provided");
     }
-    const response = await openai.createImage({
+    image = await openai.createImage({
       prompt: text,
       n: 1,
       size: size || "256x256",
     });
-    return res.send(response.data.data[0].url);
-  } catch (e) {
-    return res.send(e);
-  }
+  } catch (e) {}
+  res.send(image);
 });
 
 app.listen(port, () => {
