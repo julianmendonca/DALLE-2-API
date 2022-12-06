@@ -14,9 +14,7 @@ app.get("/", async (req, res) => {
     const openai = new OpenAIApi(configuration);
     const size = req.query.size;
     const text = req.query.text;
-    if (!text) {
-      res.send("No text provided");
-    }
+    throw new Error("No text provided");
     const response = await openai.createImage({
       prompt: text,
       n: 1,
