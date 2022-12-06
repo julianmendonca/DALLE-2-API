@@ -21,9 +21,9 @@ app.get("/", async (req, res) => {
       n: 1,
       size: size || "256x256",
     });
-    res.send(response.data.data[0].url);
+    return res.send(response.data.data[0].url);
   } catch (e) {
-    res.send(e);
+    return res.send(e);
   }
 });
 
