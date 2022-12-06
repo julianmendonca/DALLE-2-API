@@ -4,13 +4,12 @@ const { Configuration, OpenAIApi } = require("openai");
 const app = express();
 const port = 3000;
 
-const configuration = new Configuration({
-  apiKey: process.env.OPENAI_API_KEY,
-});
-const openai = new OpenAIApi(configuration);
-
 app.get("/", async (req, res) => {
   try {
+    const configuration = new Configuration({
+      apiKey: process.env.OPENAI_API_KEY,
+    });
+    const openai = new OpenAIApi(configuration);
     const size = req.query.size;
     const text = req.query.text;
     if (!text) {
