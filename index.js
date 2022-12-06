@@ -22,7 +22,7 @@ app.get("/", async (req, res) => {
       size: size || "256x256",
     });
   } catch (e) {}
-  res.send(image);
+  return res.send(image);
 });
 
 app.listen(port, () => {
