@@ -10,10 +10,15 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 
 app.get("/", async (req, res) => {
+  const size = req.query.size;
+  const text = req.query.text;
+  if (!text) {
+    res.send("No text provided");
+  }
   const response = await openai.createImage({
-    prompt: "a white siamese cat",
+    prompt: text,
     n: 1,
-    size: "1024x1024",
+    size: size || "256x256",
   });
   res.send(response.data.data[0].url);
 });
