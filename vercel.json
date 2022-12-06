@@ -1,5 +1,4 @@
 {
-  "name": "vercel-typescript-rest-api",
   "version": 2,
   "public": true,
   "builds": [
